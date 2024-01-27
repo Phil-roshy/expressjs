@@ -4,7 +4,9 @@ import cors from "cors";
 import morgan from "morgan";
 import * as middleware from "./utils/middleware.js";
 import helloRoute from "./routes/helloRouter.js";
-import mathRoute from "./routes/mathRouter.js"; // Import the new router
+import mathRoute from "./routes/mathRouter.js";
+import qrCodeRoute from "./routes/qrCodeRouter.js"; // Import the new router
+import path from "path";
 
 const app = express();
 
@@ -17,7 +19,11 @@ app.get("/", (req, res) => {
 });
 
 app.use("/hello", helloRoute);
-app.use("/math", mathRoute); // Use the new router for math operations
+app.use("/math", mathRoute);
+app.use("/qrCode", qrCodeRoute); // Use the new router for QR code generation
+
+// Serve static files (like generated QR code images)
+app.use("/qrcodes", express.static(path.join(__dirname, "public", "qrcodes")));
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
