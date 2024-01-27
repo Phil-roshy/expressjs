@@ -22,6 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/hello", helloRoute);
+app.use("/hello", mathRoute);
 
 
 // custom middleware
