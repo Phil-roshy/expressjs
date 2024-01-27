@@ -1,10 +1,12 @@
+// helloRouter.js
 import { Router } from "express";
 
-const routes = Router();
+const helloRoute = Router();
 
-routes.get("/:name", async (req, res) => {
-  const { name } = req.params;
-  res.status(200).send({ message: `Hello ${name}` });
+helloRoute.get("/", async (req, res) => {
+  const { name } = req.query;
+  const message = name ? `Hello ${name}` : "Hello";
+  res.status(200).send({ message });
 });
 
-export default routes;
+export default helloRoute;
