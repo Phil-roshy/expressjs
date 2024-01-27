@@ -21,7 +21,7 @@ qrCodeRoute.post("/generate", async (req, res) => {
     await QRCode.toFile(`./public/qrcodes/${filename}`, url);
 
     // Construct the URL for the generated QR code image
-    const imageUrl = `http://yourdomain.com/qrcodes/${filename}`; // Replace with your actual domain
+    const imageUrl = `https://expressjs-production-b5b9.up.railway.app/qrcodes/${filename}`; // Replace with your actual domain
 
     res.status(200).send({ imageUrl });
   } catch (error) {
