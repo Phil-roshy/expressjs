@@ -23,6 +23,14 @@ app.get("/", (req, res) => {
 
 app.use("/hello", helloRoute);
 
+// Display Name endpoint
+
+app.get("/:name", async (req, res) => {
+  const { name } = req.params;
+  res.status(200).send({ message: `Hello ${name}` });
+});
+
+
 // custom middleware
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
