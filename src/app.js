@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
   res.status(200).send({ status: "ok" });
 });
 
+
 app.use("/hello", helloRoute);
 app.use("/math", mathRoute);
 app.use("/qrCode", qrCodeRoute); // Use the new router for QR code generation
